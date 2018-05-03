@@ -305,6 +305,14 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="vendor\css\clean-blog.min.css" />
+    <Content Include="vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="vendor\img\about-bg.jpg" />
+    <Content Include="vendor\img\contact-bg.jpg" />
+    <Content Include="vendor\img\home-bg.jpg" />
+    <Content Include="vendor\img\post-bg.jpg" />
+    <Content Include="vendor\img\post-sample-image.jpg" />
+    <Content Include="vendor\js\clean-blog.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
