@@ -159,7 +159,7 @@ namespace Portafolio.Controllers
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
-                var portafolioUser = new User { UserName = model.UserName, Email = model.Email, Password = model.Password, Role = model.UserRoles };
+                //var portafolioUser = new User { UserName = model.UserName, Email = model.Email, Password = model.Password, Role = model.UserRoles };
 
                 if (result.Succeeded)
                 {

@@ -6,14 +6,14 @@ namespace Portafolio.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
     public sealed partial class init : IMigrationMetadata
     {
         private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804301831390_init"; }
+            get { return "201805082100525_init"; }
         }
         
         string IMigrationMetadata.Source
