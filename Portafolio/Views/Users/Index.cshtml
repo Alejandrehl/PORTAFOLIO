@@ -6,10 +6,16 @@
 
 @if (ViewBag.displayMenu == "Yes")
 {
-    <h1>Bienvenido Admin. Por ahora puedes agregar más roles de usuario, pronto podrás disfrutar de tu modulo de perfil</h1>
+    <h1>Bienvenido Admin. Pronto podrás disfrutar completamente de tu panel!</h1>
     <br />
     <h3>
-        <li>@Html.ActionLink("Manage Role", "Index", "Role")</li>
+        <li>@Html.ActionLink("Administrar Roles", "Index", "Role")</li>
+        <li>@Html.ActionLink("Administrar Países", "Index", "Countries")</li>
+        <li>@Html.ActionLink("Administrar Centros de estudio", "Index", "StudyCenters")</li>
+        <li>@Html.ActionLink("Administrar Programas de intercambio", "Index", "Programs")</li>
+        <li>@Html.ActionLink("Administrar Cursos", "Index", "Courses")</li>
+        <li>@Html.ActionLink("Administrar Notas", "Index", "Notes")</li>
+        <li>@Html.ActionLink("Ver información de familias", "Index", "FamilyInfoes")</li>
     </h3>
 }
 else

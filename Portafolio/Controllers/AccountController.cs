@@ -16,7 +16,7 @@ namespace Portafolio.Controllers
     public class AccountController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
-        Models.Portafolio portafolioContext = new Models.Portafolio();
+        //Models.Portafolio portafolioContext = new Models.Portafolio();
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

@@ -13,7 +13,7 @@ namespace Portafolio.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805082100525_init"; }
+            get { return "201805100113015_init"; }
         }
         
         string IMigrationMetadata.Source
