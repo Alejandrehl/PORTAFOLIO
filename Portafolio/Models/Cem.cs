@@ -46,6 +46,7 @@ namespace Portafolio.Models
         public string Description { get; set; }
         public string Status { get; set; }
         public int Spaces { get; set; }
+        public string Period { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
     }

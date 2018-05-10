@@ -47,7 +47,7 @@ namespace Portafolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProgramId,Name,Description,Status,Spaces")] Program program)
+        public async Task<ActionResult> Create([Bind(Include = "ProgramId,Name,Description,Status,Spaces,Period")] Program program)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Portafolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProgramId,Name,Description,Status,Spaces")] Program program)
+        public async Task<ActionResult> Edit([Bind(Include = "ProgramId,Name,Description,Status,Spaces,Period")] Program program)
         {
             if (ModelState.IsValid)
             {
