@@ -11,116 +11,107 @@ using Portafolio.Models;
 
 namespace Portafolio.Controllers
 {
-    public class ProgramsController : Controller
+    public class ProgramStatusController : Controller
     {
         private Cem db = new Cem();
 
-        // GET: Programs
+        // GET: ProgramStatus
         public async Task<ActionResult> Index()
         {
-            var program = db.Program.Include(p => p.Period).Include(p => p.ProgramStatus);
-            return View(await program.ToListAsync());
+            return View(await db.ProgramStatus.ToListAsync());
         }
 
-        // GET: Programs/Details/5
+        // GET: ProgramStatus/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Program program = await db.Program.FindAsync(id);
-            if (program == null)
+            ProgramStatus programStatus = await db.ProgramStatus.FindAsync(id);
+            if (programStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+            return View(programStatus);
         }
 
-        // GET: Programs/Create
+        // GET: ProgramStatus/Create
         public ActionResult Create()
         {
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name");
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName");
             return View();
         }
 
-        // POST: Programs/Create
+        // POST: ProgramStatus/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId")] Program program)
+        public async Task<ActionResult> Create([Bind(Include = "ProgramStatusId,StatusName")] ProgramStatus programStatus)
         {
             if (ModelState.IsValid)
             {
-                db.Program.Add(program);
+                db.ProgramStatus.Add(programStatus);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
-            return View(program);
+            return View(programStatus);
         }
 
-        // GET: Programs/Edit/5
+        // GET: ProgramStatus/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Program program = await db.Program.FindAsync(id);
-            if (program == null)
+            ProgramStatus programStatus = await db.ProgramStatus.FindAsync(id);
+            if (programStatus == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
-            return View(program);
+            return View(programStatus);
         }
 
-        // POST: Programs/Edit/5
+        // POST: ProgramStatus/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId")] Program program)
+        public async Task<ActionResult> Edit([Bind(Include = "ProgramStatusId,StatusName")] ProgramStatus programStatus)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(program).State = EntityState.Modified;
+                db.Entry(programStatus).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
-            return View(program);
+            return View(programStatus);
         }
 
-        // GET: Programs/Delete/5
+        // GET: ProgramStatus/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Program program = await db.Program.FindAsync(id);
-            if (program == null)
+            ProgramStatus programStatus = await db.ProgramStatus.FindAsync(id);
+            if (programStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+            return View(programStatus);
         }
 
-        // POST: Programs/Delete/5
+        // POST: ProgramStatus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Program program = await db.Program.FindAsync(id);
-            db.Program.Remove(program);
+            ProgramStatus programStatus = await db.ProgramStatus.FindAsync(id);
+            db.ProgramStatus.Remove(programStatus);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

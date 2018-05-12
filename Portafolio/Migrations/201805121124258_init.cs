@@ -23,13 +23,10 @@ namespace Portafolio.Migrations
                         CourseId = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
                         Name = c.String(),
                         ProgramId = c.Decimal(nullable: false, precision: 10, scale: 0),
-                        Program_ProgramId = c.Decimal(precision: 10, scale: 0),
                     })
                 .PrimaryKey(t => t.CourseId)
-                .ForeignKey("CEM.Programs", t => t.Program_ProgramId)
                 .ForeignKey("CEM.Programs", t => t.ProgramId, cascadeDelete: true)
-                .Index(t => t.ProgramId)
-                .Index(t => t.Program_ProgramId);
+                .Index(t => t.ProgramId);
             
             CreateTable(
                 "CEM.Programs",
@@ -38,13 +35,33 @@ namespace Portafolio.Migrations
                         ProgramId = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
                         Name = c.String(),
                         Description = c.String(),
-                        Status = c.String(),
                         Spaces = c.Decimal(nullable: false, precision: 10, scale: 0),
-                        Course_CourseId = c.Decimal(precision: 10, scale: 0),
+                        PeriodId = c.Decimal(nullable: false, precision: 10, scale: 0),
+                        ProgramStatusId = c.Decimal(nullable: false, precision: 10, scale: 0),
                     })
                 .PrimaryKey(t => t.ProgramId)
-                .ForeignKey("CEM.Courses", t => t.Course_CourseId)
-                .Index(t => t.Course_CourseId);
+                .ForeignKey("CEM.Periods", t => t.PeriodId, cascadeDelete: true)
+                .ForeignKey("CEM.ProgramStatus", t => t.ProgramStatusId, cascadeDelete: true)
+                .Index(t => t.PeriodId)
+                .Index(t => t.ProgramStatusId);
+            
+            CreateTable(
+                "CEM.Periods",
+                c => new
+                    {
+                        PeriodId = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.PeriodId);
+            
+            CreateTable(
+                "CEM.ProgramStatus",
+                c => new
+                    {
+                        ProgramStatusId = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
+                        StatusName = c.String(),
+                    })
+                .PrimaryKey(t => t.ProgramStatusId);
             
             CreateTable(
                 "CEM.FamilyInfoes",
@@ -88,17 +105,19 @@ namespace Portafolio.Migrations
         {
             DropForeignKey("CEM.StudyCenters", "CountryId", "CEM.Countries");
             DropForeignKey("CEM.Notes", "CourseId", "CEM.Courses");
-            DropForeignKey("CEM.Programs", "Course_CourseId", "CEM.Courses");
             DropForeignKey("CEM.Courses", "ProgramId", "CEM.Programs");
-            DropForeignKey("CEM.Courses", "Program_ProgramId", "CEM.Programs");
+            DropForeignKey("CEM.Programs", "ProgramStatusId", "CEM.ProgramStatus");
+            DropForeignKey("CEM.Programs", "PeriodId", "CEM.Periods");
             DropIndex("CEM.StudyCenters", new[] { "CountryId" });
             DropIndex("CEM.Notes", new[] { "CourseId" });
-            DropIndex("CEM.Programs", new[] { "Course_CourseId" });
-            DropIndex("CEM.Courses", new[] { "Program_ProgramId" });
+            DropIndex("CEM.Programs", new[] { "ProgramStatusId" });
+            DropIndex("CEM.Programs", new[] { "PeriodId" });
             DropIndex("CEM.Courses", new[] { "ProgramId" });
             DropTable("CEM.StudyCenters");
             DropTable("CEM.Notes");
             DropTable("CEM.FamilyInfoes");
+            DropTable("CEM.ProgramStatus");
+            DropTable("CEM.Periods");
             DropTable("CEM.Programs");
             DropTable("CEM.Courses");
             DropTable("CEM.Countries");

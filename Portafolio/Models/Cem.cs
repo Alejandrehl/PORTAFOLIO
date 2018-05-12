@@ -25,6 +25,8 @@ namespace Portafolio.Models
         public virtual DbSet<Note> Note { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<StudyCenter> StudyCenter { get; set; }
+        public virtual DbSet<Period> Period { get; set; }
+        public virtual DbSet<ProgramStatus> ProgramStatus { get; set; }
     }
 
     //Modelos
@@ -38,17 +40,32 @@ namespace Portafolio.Models
         public string Photo { get; set; }
     }
 
+    public class ProgramStatus
+    {
+        [Key]
+        public int ProgramStatusId { get; set; }
+        public string StatusName { get; set; }
+    }
+
     public class Program
     {
         [Key]
         public int ProgramId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Status { get; set; }
         public int Spaces { get; set; }
-        public string Period { get; set; }
+        public int PeriodId { get; set; }
+        [ForeignKey("PeriodId")]
+        public virtual Period Period { get; set; }
+        public int ProgramStatusId { get; set; }
+        [ForeignKey("ProgramStatusId")]
+        public virtual ProgramStatus ProgramStatus { get; set; }
+    }
 
-        public virtual ICollection<Course> Courses { get; set; }
+    public class Period {
+        [Key]
+        public int PeriodId { get; set; }
+        public string Name { get; set; }
     }
 
     public class Course
@@ -59,8 +76,6 @@ namespace Portafolio.Models
         public int ProgramId { get; set; }
         [ForeignKey("ProgramId")]
         public virtual Program Program { get; set; }
-
-        public virtual ICollection<Program> Programs { get; set; }
     }
 
     public class Note
