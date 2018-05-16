@@ -62,6 +62,26 @@ namespace Portafolio
 
             }
 
+            // creating Creating Manager role    
+            if (!roleManager.RoleExists("CelAdmin"))
+            {
+                var role = new IdentityRole();
+                role.Name = "CelAdmin";
+                roleManager.Create(role);
+
+                var user = new ApplicationUser();
+                user.UserName = "CelAdmin";
+                user.Email = "cel@cem.com";
+                string userPWD = "Cel123.";
+                var chkUser = UserManager.Create(user, userPWD);
+
+                if (chkUser.Succeeded)
+                {
+                    var result = UserManager.AddToRole(user.Id, "CelAdmin");
+                }
+
+            }
+
             // creating student role  
             if (!roleManager.RoleExists("Student"))
             {
@@ -117,7 +137,7 @@ namespace Portafolio
 
                 if (chkUser.Succeeded)
                 {
-                    var result = UserManager.AddToRole(user.Id, "LocalStudyCenter");
+                    var result = UserManager.AddToRole(user.Id, "InternationalRelations");
                 }
 
             }

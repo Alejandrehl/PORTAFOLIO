@@ -409,6 +409,7 @@
     <Content Include="Views\ProgramStatus\Details.cshtml" />
     <Content Include="Views\ProgramStatus\Edit.cshtml" />
     <Content Include="Views\ProgramStatus\Index.cshtml" />
+    <Content Include="Views\Users\Experiences.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

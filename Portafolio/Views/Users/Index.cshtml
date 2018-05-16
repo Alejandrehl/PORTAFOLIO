@@ -20,7 +20,23 @@
         <li>@Html.ActionLink("Ver información de familias", "Index", "FamilyInfoes")</li>
     </h3>
 }
-else
+@if (ViewBag.displayCelAdminMenu == "Yes")
+{
+    <h1>Bienvenido tu rol es cel admin</h1>
+}
+@if (ViewBag.displayStudentMenu == "Yes")
+{
+    <h1>Bienvenido tu rol es Student</h1>
+}
+@if (ViewBag.displayFamilyMenu == "Yes")
+{
+    <h1>Bienvenido tu rol es Family</h1>
+}
+@if (ViewBag.displayInternationalRelationsMenu == "Yes")
+{
+    <h1>Bienvenido tu rol es international relations</h1>
+}
+@*else
 {
     <h2>  Bienvenido <strong>@ViewBag.Name</strong> :) . Pronto podrás disfrutar de tu modulo de perfil </h2>
-}  
+}*@  
