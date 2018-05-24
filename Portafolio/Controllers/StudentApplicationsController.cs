@@ -18,7 +18,7 @@ namespace Portafolio.Controllers
         // GET: StudentApplications
         public async Task<ActionResult> Index()
         {
-            var studentApplication = db.StudentApplication.Include(s => s.Program);
+            var studentApplication = db.StudentApplication.Include(s => s.ApplicationStatus).Include(s => s.Program);
             return View(await studentApplication.ToListAsync());
         }
 
@@ -40,6 +40,7 @@ namespace Portafolio.Controllers
         // GET: StudentApplications/Create
         public ActionResult Create()
         {
+            ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatus, "ApplicationStatusId", "StatusName");
             ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name");
             return View();
         }
@@ -49,7 +50,7 @@ namespace Portafolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "StudentApplicationId,ApplicationStatus,StudentName,ProgramId")] StudentApplication studentApplication)
+        public async Task<ActionResult> Create([Bind(Include = "StudentApplicationId,ApplicationStatusId,StudentName,ProgramId")] StudentApplication studentApplication)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +59,7 @@ namespace Portafolio.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatus, "ApplicationStatusId", "StatusName", studentApplication.ApplicationStatusId);
             ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name", studentApplication.ProgramId);
             return View(studentApplication);
         }
@@ -74,6 +76,7 @@ namespace Portafolio.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatus, "ApplicationStatusId", "StatusName", studentApplication.ApplicationStatusId);
             ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name", studentApplication.ProgramId);
             return View(studentApplication);
         }
@@ -83,7 +86,7 @@ namespace Portafolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "StudentApplicationId,ApplicationStatus,StudentName,ProgramId")] StudentApplication studentApplication)
+        public async Task<ActionResult> Edit([Bind(Include = "StudentApplicationId,ApplicationStatusId,StudentName,ProgramId")] StudentApplication studentApplication)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +94,7 @@ namespace Portafolio.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatus, "ApplicationStatusId", "StatusName", studentApplication.ApplicationStatusId);
             ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name", studentApplication.ProgramId);
             return View(studentApplication);
         }

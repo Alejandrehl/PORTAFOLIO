@@ -420,11 +420,6 @@
     <Content Include="Views\ProgramStatus\Edit.cshtml" />
     <Content Include="Views\ProgramStatus\Index.cshtml" />
     <Content Include="Views\Users\Experiences.cshtml" />
-    <Content Include="Views\StudentApplications\Create.cshtml" />
-    <Content Include="Views\StudentApplications\Delete.cshtml" />
-    <Content Include="Views\StudentApplications\Details.cshtml" />
-    <Content Include="Views\StudentApplications\Edit.cshtml" />
-    <Content Include="Views\StudentApplications\Index.cshtml" />
     <Content Include="Views\ApplicationStatus\Create.cshtml" />
     <Content Include="Views\ApplicationStatus\Delete.cshtml" />
     <Content Include="Views\ApplicationStatus\Details.cshtml" />
@@ -432,6 +427,11 @@
     <Content Include="Views\ApplicationStatus\Index.cshtml" />
     <Content Include="Views\Programs\PublicatedPrograms.cshtml" />
     <Content Include="Views\StudyCenters\PublicatedStudyCenters.cshtml" />
+    <Content Include="Views\StudentApplications\Create.cshtml" />
+    <Content Include="Views\StudentApplications\Delete.cshtml" />
+    <Content Include="Views\StudentApplications\Details.cshtml" />
+    <Content Include="Views\StudentApplications\Edit.cshtml" />
+    <Content Include="Views\StudentApplications\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

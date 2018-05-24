@@ -6,7 +6,7 @@
 
 @if (ViewBag.displayMenu == "Yes")
 {
-    <h1>Bienvenido Admin. Pronto podrás disfrutar completamente de tu panel!</h1>
+    <h1>Bienvenido Admin!</h1>
     <br />
     <h3>
         <li>@Html.ActionLink("Administrar Roles", "Index", "Role")</li>
@@ -32,7 +32,7 @@
 {
     <h1>Bienvenido tu rol es Student</h1>
     <h3>
-        <li>@Html.ActionLink("Postular a programa de intercambio", "Create", "StudyCenters")</li>
+        <li>@Html.ActionLink("Postular a programa de intercambio", "PublicatedPrograms", "Programs")</li>
     </h3>
 }
 @if (ViewBag.displayFamilyMenu == "Yes")

@@ -38,6 +38,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Spaces)
         </td>
+        @if (Request.IsAuthenticated)
+        {
+        <td>
+            <a href="/StudentApplications/create" class="btn btn-sm btn-success">Postular</a>
+        </td>
+        }
     </tr>
 }
 
