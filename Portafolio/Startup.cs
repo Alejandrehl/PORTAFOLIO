@@ -122,25 +122,45 @@ namespace Portafolio
 
             }
 
-            // creating InternationalRelationsManager role  
-            if (!roleManager.RoleExists("InternationalRelations"))
+            // creating family role  
+            if (!roleManager.RoleExists("InternationalAdmin"))
             {
                 var role = new IdentityRole();
-                role.Name = "InternationalRelations";
+                role.Name = "InternationalAdmin";
                 roleManager.Create(role);
 
                 var user = new ApplicationUser();
-                user.UserName = "Departamento de relaciones internacionales";
-                user.Email = "international@cem.com";
-                string userPWD = "International123.";
+                user.UserName = "InternationalAdmin";
+                user.Email = "InternationalAdmin@cem.com";
+                string userPWD = "InternationalAdmin123.";
                 var chkUser = UserManager.Create(user, userPWD);
 
                 if (chkUser.Succeeded)
                 {
-                    var result = UserManager.AddToRole(user.Id, "InternationalRelations");
+                    var result = UserManager.AddToRole(user.Id, "InternationalAdmin");
                 }
 
             }
+
+            //// creating InternationalRelationsManager role  
+            //if (!roleManager.RoleExists("InternationalRelations"))
+            //{
+            //    var role = new IdentityRole();
+            //    role.Name = "InternationalRelations";
+            //    roleManager.Create(role);
+
+            //    var user = new ApplicationUser();
+            //    user.UserName = "Departamento de relaciones internacionales";
+            //    user.Email = "international@cem.com";
+            //    string userPWD = "International123.";
+            //    var chkUser = UserManager.Create(user, userPWD);
+
+            //    if (chkUser.Succeeded)
+            //    {
+            //        var result = UserManager.AddToRole(user.Id, "InternationalRelations");
+            //    }
+
+            //}
 
         }
     }

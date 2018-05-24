@@ -140,7 +140,7 @@ namespace Portafolio.Controllers
                 ApplicationDbContext context = new ApplicationDbContext();
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
-                if (s[0].ToString() == "InternationalRelations")
+                if (s[0].ToString() == "InternationalAdmin")
                 {
                     return true;
                 }

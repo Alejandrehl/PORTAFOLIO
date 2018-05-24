@@ -1,11 +1,8 @@
 namespace Portafolio.Models
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
-    using System.Linq;
 
     public class Cem : DbContext
     {
@@ -103,5 +100,16 @@ namespace Portafolio.Models
         public int CountryId { get; set; }
         [ForeignKey("CountryId")]
         public virtual Country country { get; set; }
+    }
+
+    public class StudentApplication
+    {
+        [Key]
+        public int StudentApplicationId { get; set; }
+        public string ApplicationStatus { get; set; }
+        public string StudentName { get; set; }
+        public int ProgramId { get; set; }
+        [ForeignKey("ProgramId")]
+        public virtual Program Program { get; set; }
     }
 }
