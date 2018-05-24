@@ -431,6 +431,7 @@
     <Content Include="Views\ApplicationStatus\Edit.cshtml" />
     <Content Include="Views\ApplicationStatus\Index.cshtml" />
     <Content Include="Views\Programs\PublicatedPrograms.cshtml" />
+    <Content Include="Views\StudyCenters\PublicatedStudyCenters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

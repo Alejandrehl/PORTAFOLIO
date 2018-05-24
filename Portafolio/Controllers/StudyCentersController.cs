@@ -22,6 +22,12 @@ namespace Portafolio.Controllers
             return View(await studyCenter.ToListAsync());
         }
 
+        public async Task<ActionResult> PublicatedStudyCenters()
+        {
+            var studyCenter = db.StudyCenter.Include(s => s.country);
+            return View(await studyCenter.ToListAsync());
+        }
+
         // GET: StudyCenters/Details/5
         public async Task<ActionResult> Details(int? id)
         {

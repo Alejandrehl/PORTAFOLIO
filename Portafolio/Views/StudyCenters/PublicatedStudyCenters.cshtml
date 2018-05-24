@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Portafolio.Models.StudyCenter>
+
+@{
+    ViewBag.Title = "PublicatedStudyCenters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Centros de estudios</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            País 
+        </th>
+        <th>
+            Centro de estudio
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.country.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+    </tr>
+}
+
+</table>
