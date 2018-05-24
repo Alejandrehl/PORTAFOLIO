@@ -24,6 +24,8 @@ namespace Portafolio.Models
         public virtual DbSet<StudyCenter> StudyCenter { get; set; }
         public virtual DbSet<Period> Period { get; set; }
         public virtual DbSet<ProgramStatus> ProgramStatus { get; set; }
+        public virtual DbSet<StudentApplication> StudentApplication { get; set; }
+        public virtual DbSet<ApplicationStatus> ApplicationStatus { get; set; }
     }
 
     //Modelos
@@ -106,10 +108,18 @@ namespace Portafolio.Models
     {
         [Key]
         public int StudentApplicationId { get; set; }
-        public string ApplicationStatus { get; set; }
+        public int ApplicationStatusId { get; set; }
+        [ForeignKey("ApplicationStatusId")]
+        public virtual ApplicationStatus ApplicationStatus { get; set; }
         public string StudentName { get; set; }
         public int ProgramId { get; set; }
         [ForeignKey("ProgramId")]
         public virtual Program Program { get; set; }
+    }
+
+    public class ApplicationStatus {
+        [Key]
+        public int ApplicationStatusId { get; set; }
+        public string StatusName { get; set; }
     }
 }

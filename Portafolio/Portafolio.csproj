@@ -228,6 +228,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationStatusController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\FamilyInfoesController.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Controllers\ProgramsController.cs" />
     <Compile Include="Controllers\ProgramStatusController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StudentApplicationsController.cs" />
     <Compile Include="Controllers\StudyCentersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,6 +248,14 @@
     <Compile Include="Migrations\201805121124258_init.cs" />
     <Compile Include="Migrations\201805121124258_init.Designer.cs">
       <DependentUpon>201805121124258_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805240252151_StudentApplication.cs" />
+    <Compile Include="Migrations\201805240252151_StudentApplication.Designer.cs">
+      <DependentUpon>201805240252151_StudentApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805240306272_ApplicationStatus.cs" />
+    <Compile Include="Migrations\201805240306272_ApplicationStatus.Designer.cs">
+      <DependentUpon>201805240306272_ApplicationStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -410,6 +420,17 @@
     <Content Include="Views\ProgramStatus\Edit.cshtml" />
     <Content Include="Views\ProgramStatus\Index.cshtml" />
     <Content Include="Views\Users\Experiences.cshtml" />
+    <Content Include="Views\StudentApplications\Create.cshtml" />
+    <Content Include="Views\StudentApplications\Delete.cshtml" />
+    <Content Include="Views\StudentApplications\Details.cshtml" />
+    <Content Include="Views\StudentApplications\Edit.cshtml" />
+    <Content Include="Views\StudentApplications\Index.cshtml" />
+    <Content Include="Views\ApplicationStatus\Create.cshtml" />
+    <Content Include="Views\ApplicationStatus\Delete.cshtml" />
+    <Content Include="Views\ApplicationStatus\Details.cshtml" />
+    <Content Include="Views\ApplicationStatus\Edit.cshtml" />
+    <Content Include="Views\ApplicationStatus\Index.cshtml" />
+    <Content Include="Views\Programs\PublicatedPrograms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,6 +447,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805121124258_init.resx">
       <DependentUpon>201805121124258_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805240252151_StudentApplication.resx">
+      <DependentUpon>201805240252151_StudentApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805240306272_ApplicationStatus.resx">
+      <DependentUpon>201805240306272_ApplicationStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

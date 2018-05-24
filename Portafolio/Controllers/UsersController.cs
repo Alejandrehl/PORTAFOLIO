@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace Portafolio.Controllers
 {
-    [Authorize]
     public class UsersController : Controller
     {
         // GET: Users
+        [Authorize]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -52,6 +52,7 @@ namespace Portafolio.Controllers
 
         }
 
+        [Authorize]
         public Boolean isAdminUser()
         {
             if (User.Identity.IsAuthenticated)
@@ -72,6 +73,7 @@ namespace Portafolio.Controllers
             return false;
         }
 
+        [Authorize]
         public Boolean isCelAdmin()
         {
             if (User.Identity.IsAuthenticated)
@@ -92,6 +94,7 @@ namespace Portafolio.Controllers
             return false;
         }
 
+        [Authorize]
         public Boolean isStudent()
         {
             if (User.Identity.IsAuthenticated)
@@ -112,6 +115,7 @@ namespace Portafolio.Controllers
             return false;
         }
 
+        [Authorize]
         public Boolean isfamily()
         {
             if (User.Identity.IsAuthenticated)
@@ -132,6 +136,7 @@ namespace Portafolio.Controllers
             return false;
         }
 
+        [Authorize]
         public Boolean isInternationalRelations()
         {
             if (User.Identity.IsAuthenticated)

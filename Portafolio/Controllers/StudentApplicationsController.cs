@@ -11,122 +11,112 @@ using Portafolio.Models;
 
 namespace Portafolio.Controllers
 {
-    public class ProgramsController : Controller
+    public class StudentApplicationsController : Controller
     {
         private Cem db = new Cem();
 
-        // GET: Programs
+        // GET: StudentApplications
         public async Task<ActionResult> Index()
         {
-            var program = db.Program.Include(p => p.Period).Include(p => p.ProgramStatus);
-            return View(await program.ToListAsync());
+            var studentApplication = db.StudentApplication.Include(s => s.Program);
+            return View(await studentApplication.ToListAsync());
         }
 
-        // GET: Programs/Details/5
+        // GET: StudentApplications/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Program program = await db.Program.FindAsync(id);
-            if (program == null)
+            StudentApplication studentApplication = await db.StudentApplication.FindAsync(id);
+            if (studentApplication == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+            return View(studentApplication);
         }
 
-        public ActionResult PublicatedPrograms()
-        {
-            var programs = db.Program.Where(p => p.ProgramStatus.StatusName.Contains("publicated"));
-            return View(programs);
-        }
-
-        // GET: Programs/Create
+        // GET: StudentApplications/Create
         public ActionResult Create()
         {
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name");
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName");
+            ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name");
             return View();
         }
 
-        // POST: Programs/Create
+        // POST: StudentApplications/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId")] Program program)
+        public async Task<ActionResult> Create([Bind(Include = "StudentApplicationId,ApplicationStatus,StudentName,ProgramId")] StudentApplication studentApplication)
         {
             if (ModelState.IsValid)
             {
-                db.Program.Add(program);
+                db.StudentApplication.Add(studentApplication);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
-            return View(program);
+            ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name", studentApplication.ProgramId);
+            return View(studentApplication);
         }
 
-        // GET: Programs/Edit/5
+        // GET: StudentApplications/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Program program = await db.Program.FindAsync(id);
-            if (program == null)
+            StudentApplication studentApplication = await db.StudentApplication.FindAsync(id);
+            if (studentApplication == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
-            return View(program);
+            ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name", studentApplication.ProgramId);
+            return View(studentApplication);
         }
 
-        // POST: Programs/Edit/5
+        // POST: StudentApplications/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId")] Program program)
+        public async Task<ActionResult> Edit([Bind(Include = "StudentApplicationId,ApplicationStatus,StudentName,ProgramId")] StudentApplication studentApplication)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(program).State = EntityState.Modified;
+                db.Entry(studentApplication).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
-            ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
-            return View(program);
+            ViewBag.ProgramId = new SelectList(db.Program, "ProgramId", "Name", studentApplication.ProgramId);
+            return View(studentApplication);
         }
 
-        // GET: Programs/Delete/5
+        // GET: StudentApplications/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Program program = await db.Program.FindAsync(id);
-            if (program == null)
+            StudentApplication studentApplication = await db.StudentApplication.FindAsync(id);
+            if (studentApplication == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+            return View(studentApplication);
         }
 
-        // POST: Programs/Delete/5
+        // POST: StudentApplications/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Program program = await db.Program.FindAsync(id);
-            db.Program.Remove(program);
+            StudentApplication studentApplication = await db.StudentApplication.FindAsync(id);
+            db.StudentApplication.Remove(studentApplication);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
