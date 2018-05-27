@@ -1,56 +1,51 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="card text-center">
+    <div class="card-header">
+        Mis acciones
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Bienvenido @ViewBag.Name</h5>
+        <p class="card-text"></p>
 @if (ViewBag.displayMenu == "Yes")
 {
-    <h1>Bienvenido Admin!</h1>
-    <br />
-    <h3>
-        <li>@Html.ActionLink("Administrar Roles", "Index", "Role")</li>
-        <li>@Html.ActionLink("Administrar Países", "Index", "Countries")</li>
-        <li>@Html.ActionLink("Administrar Centros de estudio", "Index", "StudyCenters")</li>
-        <li>@Html.ActionLink("Administrar Programas de intercambio", "Index", "Programs")</li>
-        <li>@Html.ActionLink("Administrar Cursos", "Index", "Courses")</li>
-        <li>@Html.ActionLink("Administrar Notas", "Index", "Notes")</li>
-        <li>@Html.ActionLink("Administrar Periodos de programas", "Index", "Periods")</li>
-        <li>@Html.ActionLink("Administrar Estados de programas", "Index", "ProgramStatus")</li>
-        <li>@Html.ActionLink("Ver información de familias", "Index", "FamilyInfoes")</li>
-    </h3>
+        @Html.ActionLink("Administrar Roles", "Index", "Role", null ,new { @class = "btn btn-sm btn-secondary" }) 
+        @Html.ActionLink("Administrar Países", "Index", "Countries", null ,new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
+        @Html.ActionLink("Administrar Centros de estudio", "Index", "StudyCenters", null,new { @class = "btn btn-sm btn-secondary" }) 
+        @Html.ActionLink("Administrar Programas de intercambio", "Index", "Programs", null, new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
+        @Html.ActionLink("Administrar Cursos", "Index", "Courses", null ,new { @class = "btn btn-sm btn-secondary" }) 
+        @Html.ActionLink("Administrar Notas", "Index", "Notes", null ,new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
+        @Html.ActionLink("Administrar Periodos de programas", "Index", "Periods", null ,new { @class = "btn btn-sm btn-secondary" }) 
+        @Html.ActionLink("Administrar Estados de programas", "Index", "ProgramStatus", null ,new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
+        @Html.ActionLink("Ver información de familias", "Index", "FamilyInfoes", null ,new { @class = "btn btn-sm btn-secondary" }) 
+        @Html.ActionLink("Cambiar contraseña", "ChangePassword", "Manage", null ,new { @class = "btn btn-sm btn-info ml-5" })<br /><br />
+}
+@if (ViewBag.displayStudentMenu == "Yes")
+{
+    @Html.ActionLink("Postular a programa de intercambios", "PublicatedPrograms", "Programs", null, new { @class = "btn btn-sm btn-secondary" })
+    @Html.ActionLink("Cambiar contraseña", "ChangePassword", "Manage", null, new { @class = "btn btn-sm btn-info ml-5" })<br /><br />
 }
 @if (ViewBag.displayCelAdminMenu == "Yes")
 {
-    <h2>  Bienvenido <strong>@ViewBag.Name</strong> :) . Pronto podrás disfrutar de tu modulo de perfil </h2>
-    <br />
     <h3>
         <li>@Html.ActionLink("Registrar un centro de estudio", "Create", "StudyCenters")</li>
     </h3>
 }
-@if (ViewBag.displayStudentMenu == "Yes")
-{
-    <h1>Bienvenido tu rol es Student</h1>
-    <h3>
-        <li>@Html.ActionLink("Postular a programa de intercambio", "PublicatedPrograms", "Programs")</li>
-    </h3>
-}
 @if (ViewBag.displayFamilyMenu == "Yes")
 {
-    <h1>Bienvenido tu rol es Family</h1>
+
 }
 @if (ViewBag.displayInternationalRelationsMenu == "Yes")
 {
-    <h1>Bienvenido tu rol es international relations</h1>
     <h3>
         <li>@Html.ActionLink("Administrar Programas de intercambio", "Index", "Programs")</li>
     </h3>
 }
-@*else
-{
-    <h2>  Bienvenido <strong>@ViewBag.Name</strong> :) . Pronto podrás disfrutar de tu modulo de perfil </h2>
-    <h1>Bienvenido tu rol es international relations</h1>
-    <h3>
-        <li>@Html.ActionLink("Administrar Programas de intercambio", "Index", "Programs")</li>
-    </h3>
-}*@  
+    </div>
+    <div class="card-footer text-muted">
+        @DateTime.Now
+    </div>
+</div>
