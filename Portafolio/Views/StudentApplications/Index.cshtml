@@ -80,8 +80,9 @@ else
                     @Html.DisplayFor(modelItem => item.StudentName)
                 </td>
                 <td>
-                    @Html.ActionLink("Modificar postulacion", "Edit", new { id = item.StudentApplicationId }) |
-                    @Html.ActionLink("Eliminar postulacion", "Delete", new { id = item.StudentApplicationId })
+                    @Html.ActionLink("Modificar postulacion", "Edit", new { id = item.StudentApplicationId }, new { @class = "btn btn-sm btn-primary" }) |
+                    @Html.ActionLink("Eliminar postulacion", "Delete", new { id = item.StudentApplicationId }, new { @class = "btn btn-sm btn-danger" })
+                    
                 </td>
             </tr>
         }
