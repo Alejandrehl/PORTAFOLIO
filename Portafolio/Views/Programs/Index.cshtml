@@ -19,6 +19,9 @@
             @Html.DisplayNameFor(model => model.ProgramStatus.StatusName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.StudyCenter.Name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -37,6 +40,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProgramStatus.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyCenter.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)

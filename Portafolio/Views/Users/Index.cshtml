@@ -20,12 +20,15 @@
         @Html.ActionLink("Administrar Notas", "Index", "Notes", null ,new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
         @Html.ActionLink("Administrar Periodos de programas", "Index", "Periods", null ,new { @class = "btn btn-sm btn-secondary" }) 
         @Html.ActionLink("Administrar Estados de programas", "Index", "ProgramStatus", null ,new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
-        @Html.ActionLink("Ver información de familias", "Index", "FamilyInfoes", null ,new { @class = "btn btn-sm btn-secondary" }) 
-        @Html.ActionLink("Cambiar contraseña", "ChangePassword", "Manage", null ,new { @class = "btn btn-sm btn-info ml-5" })<br /><br />
+        @Html.ActionLink("Ver información de familias", "Index", "FamilyInfoes", null ,new { @class = "btn btn-sm btn-secondary" })
+        @Html.ActionLink("Administrar estados de postulaciones", "Index", "ApplicationStatus", null, new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
+        @Html.ActionLink("Administrar Postulaciones", "Index", "StudentApplications", null, new { @class = "btn btn-sm btn-secondary" })
+        @Html.ActionLink("Cambiar contraseña", "ChangePassword", "Manage", null, new { @class = "btn btn-sm btn-info ml-5" })<br /><br />
 }
 @if (ViewBag.displayStudentMenu == "Yes")
 {
-    @Html.ActionLink("Postular a programa de intercambios", "PublicatedPrograms", "Programs", null, new { @class = "btn btn-sm btn-secondary" })
+    @Html.ActionLink("Postular a programa de intercambios", "PublicatedPrograms", "Programs", null, new { @class = "btn btn-sm btn-secondary ml-5" })
+    @Html.ActionLink("Ver mis postulaciones", "Index", "StudentApplications", null, new { @class = "btn btn-sm btn-secondary ml-5" })<br /><br />
     @Html.ActionLink("Cambiar contraseña", "ChangePassword", "Manage", null, new { @class = "btn btn-sm btn-info ml-5" })<br /><br />
 }
 @if (ViewBag.displayCelAdminMenu == "Yes")
@@ -36,7 +39,9 @@
 }
 @if (ViewBag.displayFamilyMenu == "Yes")
 {
-
+    @Html.ActionLink("Subir certificados", "Index", "Role", null, new { @class = "btn btn-sm btn-secondary" })<br /><br />
+    @Html.ActionLink("Ver postulaciones de alumnos", "Index", "Role", null, new { @class = "btn btn-sm btn-secondary" })<br /><br />
+    @Html.ActionLink("Cambiar contraseña", "ChangePassword", "Manage", null, new { @class = "btn btn-sm btn-info ml-5" })<br /><br />
 }
 @if (ViewBag.displayInternationalRelationsMenu == "Yes")
 {

@@ -59,6 +59,9 @@ namespace Portafolio.Models
         public int ProgramStatusId { get; set; }
         [ForeignKey("ProgramStatusId")]
         public virtual ProgramStatus ProgramStatus { get; set; }
+        public int StudyCenterId { get; set; }
+        [ForeignKey("StudyCenterId")]
+        public virtual StudyCenter StudyCenter { get; set; }
     }
 
     public class Period {

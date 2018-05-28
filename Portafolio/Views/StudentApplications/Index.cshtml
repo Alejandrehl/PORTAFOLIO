@@ -1,46 +1,91 @@
 ﻿@model IEnumerable<Portafolio.Models.StudentApplication>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Postulaciones";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Postulaciones</h2>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Program.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentName)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Program.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationStatus.StatusName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Program.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StudentApplicationId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StudentApplicationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StudentApplicationId })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationStatus.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Program.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StudentApplicationId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.StudentApplicationId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentApplicationId })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Estado
+                @*@Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)*@
+            </th>
+            <th>
+                Programa
+                @*@Html.DisplayNameFor(model => model.Program.Name)*@
+            </th>
+            <th>
+                Nombre postulante
+                @*@Html.DisplayNameFor(model => model.StudentName)*@
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationStatus.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Program.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar postulacion", "Edit", new { id = item.StudentApplicationId }) |
+                    @Html.ActionLink("Eliminar postulacion", "Delete", new { id = item.StudentApplicationId })
+                </td>
+            </tr>
+        }
+
+    </table>
 }
 
-</table>

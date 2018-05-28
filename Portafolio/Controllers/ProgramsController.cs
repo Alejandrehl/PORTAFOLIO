@@ -18,9 +18,18 @@ namespace Portafolio.Controllers
         // GET: Programs
         public async Task<ActionResult> Index()
         {
-            var program = db.Program.Include(p => p.Period).Include(p => p.ProgramStatus);
+            var program = db.Program.Include(p => p.Period).Include(p => p.ProgramStatus).Include(p => p.StudyCenter);
             return View(await program.ToListAsync());
         }
+
+
+        public ActionResult PublicatedPrograms()
+        {
+            var programs = db.Program.Where(p => p.ProgramStatus.StatusName.Contains("publicated"));
+            return View(programs);
+        }
+
+
 
         // GET: Programs/Details/5
         public async Task<ActionResult> Details(int? id)
@@ -37,17 +46,12 @@ namespace Portafolio.Controllers
             return View(program);
         }
 
-        public ActionResult PublicatedPrograms()
-        {
-            var programs = db.Program.Where(p => p.ProgramStatus.StatusName.Contains("publicated"));
-            return View(programs);
-        }
-
         // GET: Programs/Create
         public ActionResult Create()
         {
             ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name");
             ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName");
+            ViewBag.StudyCenterId = new SelectList(db.StudyCenter, "StudyCenterId", "Name");
             return View();
         }
 
@@ -56,7 +60,7 @@ namespace Portafolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId")] Program program)
+        public async Task<ActionResult> Create([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId,StudyCenterId")] Program program)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +71,7 @@ namespace Portafolio.Controllers
 
             ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
             ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
+            ViewBag.StudyCenterId = new SelectList(db.StudyCenter, "StudyCenterId", "Name", program.StudyCenterId);
             return View(program);
         }
 
@@ -84,6 +89,7 @@ namespace Portafolio.Controllers
             }
             ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
             ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
+            ViewBag.StudyCenterId = new SelectList(db.StudyCenter, "StudyCenterId", "Name", program.StudyCenterId);
             return View(program);
         }
 
@@ -92,7 +98,7 @@ namespace Portafolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId")] Program program)
+        public async Task<ActionResult> Edit([Bind(Include = "ProgramId,Name,Description,Spaces,PeriodId,ProgramStatusId,StudyCenterId")] Program program)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +108,7 @@ namespace Portafolio.Controllers
             }
             ViewBag.PeriodId = new SelectList(db.Period, "PeriodId", "Name", program.PeriodId);
             ViewBag.ProgramStatusId = new SelectList(db.ProgramStatus, "ProgramStatusId", "StatusName", program.ProgramStatusId);
+            ViewBag.StudyCenterId = new SelectList(db.StudyCenter, "StudyCenterId", "Name", program.StudyCenterId);
             return View(program);
         }
 
